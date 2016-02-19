@@ -6,7 +6,7 @@
     %tr
       %th= link_to 'Movie Title', new_movie_path
       %th Rating
-      %th Release Date
+      %th= link_to 'Release Date', new_movie_path
       %th More Info
   %tbody
     - @movies.each do |movie|
