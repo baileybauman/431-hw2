@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
       #@ratings.each do |r, val|
        # rating_list = rating_list + val
       #end
-      @movies = Movie.all.order('rating').find('PG')
+      @movies = Movie.all.order('rating').where(:rating =>'PG')
     end
   end
 
