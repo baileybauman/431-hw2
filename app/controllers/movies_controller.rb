@@ -14,12 +14,12 @@ class MoviesController < ApplicationController
     @sort_by = params[:sort]
     @all_ratings = ['G','PG','PG-13','R']
 
-    
+    @ratings = params[:ratings]
     @movies = Movie.all.order(params[:sort]) # sort by certain column headers
 
     #detect if user wants to sort by ratings
     if params[:ratings].present?
-      @ratings = params[:ratings]
+     # @ratings = params[:ratings]
 
       params[:ratings].each do |r, val|
         @movies = @movies.where(:rating =>r)
