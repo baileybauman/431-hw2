@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     @all_ratings = ['G','PG','PG-13','R']
     @movies = Movie.all.order(params[:sort]) # sort by certain column headers
     #detect if user wants to sort by ratings
-    if params[:commit].present?
+    if params[:ratings].present?
       @movies = Movie.all
       #get ratings to sort by
       @ratings.each do |r, val|
