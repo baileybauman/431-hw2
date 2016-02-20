@@ -14,6 +14,9 @@ class MoviesController < ApplicationController
     @sort_by = params[:sort]
     @all_ratings = ['G','PG','PG-13','R']
     @movies = Movie.all.order(params[:sort]) # sort by certain column headers
+    if params[:commit].present?
+      @movies = Movie.all.order('rating')
+    end
   end
 
   def new
