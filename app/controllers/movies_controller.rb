@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   def index
     @sort_by = params[:sort]
     @all_ratings = ['G','PG','PG-13','R']
-    @ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
+    @ratings = params[:ratings] || {} #{'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
 
     @movies = Movie.all.order(params[:sort]) # sort by certain column headers
 
