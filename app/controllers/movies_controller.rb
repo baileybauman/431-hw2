@@ -11,13 +11,19 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @sort_by = params[:sort]
+    if params[:sort].present?
+      @sort_by = params[:sort]
+    end
+
     @all_ratings = ['G','PG','PG-13','R']
-    @movies = Movie.all.order(params[:sort]) # sort by certain column headers
+    
+    @movies = Movie.all.order(@sort_by) # sort by certain column headers
+    
     #detect if user wants to sort by ratings
     if params[:ratings].present?
+      @ratings = params[:ratings]
       #get ratings to sort by
-      params[:ratings].each do |r, val|
+      ratings.each do |r, val|
         @movies = @movies.where(:rating =>r)
       end
       #@movies = Movie.all.order('rating').where(:rating =>'PG')
