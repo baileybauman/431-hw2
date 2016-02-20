@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
       @movies = Movie.all
       #get ratings to sort by
       @ratings.each do |r, val|
-        @movies = @movies.where(:rating =>val)
+        @movies = @movies.where(:rating =>r)
       end
       #@movies = Movie.all.order('rating').where(:rating =>'PG')
     end
