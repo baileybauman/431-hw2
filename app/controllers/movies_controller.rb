@@ -19,11 +19,12 @@ class MoviesController < ApplicationController
 
     #detect if user wants to sort by ratings
     if params[:ratings].present?
-      
+      where_list = []
 
       params[:ratings].each do |r, val|
-        @movies = @movies.where(:rating =>r)
+        where_list.push(r) 
       end
+      @movies = @movies.where(:rating => where_list)
 
       # add checks to boxes
     end
