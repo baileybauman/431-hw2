@@ -6,7 +6,7 @@
     %tr
       %th{:class => ('title' == @sort_by) ? 'hilite' : '', :id => 'title_header'}= link_to 'Movie Title', :sort => 'title'
       %th Rating
-      %th{:class => ('release_date' == @sort_by) ? 'hilite' : ''}= link_to 'Release Date', :sort => 'release_date'
+      %th{:class => ('release_date' == @sort_by) ? 'hilite' : '', :id => 'release_date_header'}= link_to 'Release Date', :sort => 'release_date'
       %th More Info
   %tbody
     - @movies.each do |movie|
