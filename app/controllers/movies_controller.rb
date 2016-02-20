@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     @sort_by = params[:sort]
-    @movies = Movie.all.order(params[:sort])
+    @movies = Movie.all.order(params[:sort]) # sort by certain column headers
   end
 
   def new
