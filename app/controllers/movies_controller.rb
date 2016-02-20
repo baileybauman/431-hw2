@@ -23,6 +23,8 @@ class MoviesController < ApplicationController
       params[:ratings].each do |r, val|
         @movies = @movies.where(:rating =>r)
       end
+
+      # add checks to boxes
     end
   end
 

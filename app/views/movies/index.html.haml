@@ -6,10 +6,10 @@
   Include:
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]"
+    = check_box_tag "ratings[#{rating}]", true
   = submit_tag 'Refresh'
 
-  
+
 %table#movies
   %thead
     %tr
