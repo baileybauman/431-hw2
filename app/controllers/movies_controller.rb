@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.find(1)
+    @movies = Movie.all
   end
 
   def new
