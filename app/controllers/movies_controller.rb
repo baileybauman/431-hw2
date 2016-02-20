@@ -15,9 +15,8 @@ class MoviesController < ApplicationController
     @all_ratings = ['G','PG','PG-13','R']
     @ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
 
-    @movies = Movie.all.order(params[:sort]) # sort by certain column headers
+    @movies = Movie.all.order(params[:sort]) 
 
-    #detect if user wants to sort by ratings
     if params[:ratings].present?
       where_list = []
 
