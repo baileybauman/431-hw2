@@ -17,8 +17,9 @@ class MoviesController < ApplicationController
     #detect if user wants to sort by ratings
     if params[:ratings].present?
       @movies = Movie.all
+
       #get ratings to sort by
-      @ratings.each do |r, val|
+      params[:ratings].each do |r, val|
         @movies = @movies.where(:rating =>r)
       end
       #@movies = Movie.all.order('rating').where(:rating =>'PG')
