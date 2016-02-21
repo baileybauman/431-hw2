@@ -18,8 +18,8 @@ class MoviesController < ApplicationController
       @sort_by = []
     end
 
-    if not session[:sort].nil?
-      @sort_by = session[:sort]
+    #if not session[:sort].nil?
+     # @sort_by = session[:sort]
 
     @all_ratings = ['G','PG','PG-13','R']
     @ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
