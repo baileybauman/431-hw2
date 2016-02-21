@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
       @sort_by = params[:sort]
       session[:sort] = @sort_by
     else
-      @sort_by = session[:sort]
+      @sort_by = session[:sort] || []
       #redirect_to :action=> 'index', :sort => @sort_by
       #redirect_to 'Release Date', :sort => @sort_by
     end
@@ -23,16 +23,13 @@ class MoviesController < ApplicationController
     if params[:ratings].present?
       @ratings = params[:ratings]
       session[:ratings] = @ratings
-    elsif !params[:ratings].present? && session[:ratings].nil?
-      @ratings = {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
-      session[:ratings] = @ratings
     else
-      @ratings = session[:ratings]
+      @ratings = session[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
       #redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
     end
 
-    if !params[:ratings].present? || !params[:sort].present?
-      redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
+    #if (!params[:ratings].present? || !params[:sort].present?)
+     # redirect_to :action=> 'index', {:sort => @sort_by, :ratings => @ratings}
 
     @all_ratings = ['G','PG','PG-13','R']
     @movies = Movie.all.order(@sort_by) 
