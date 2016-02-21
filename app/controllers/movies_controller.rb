@@ -15,8 +15,8 @@ class MoviesController < ApplicationController
       @sort_by = params[:sort]
       session[:sort] = @sort_by
     else
-      #@sort_by = session[:sort]
-      redirect_to :controller => 'MoviesController', :action => 'index', :sort => session[:sort]
+      @sort_by = session[:sort]
+      redirect_to 'Release Date', :sort => @sort_by
     end
 
     if params[:ratings].present?
