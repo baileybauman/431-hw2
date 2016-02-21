@@ -25,10 +25,6 @@ class MoviesController < ApplicationController
     elsif !params[:ratings].present? && session[:ratings].nil?
       @ratings = {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
       session[:ratings] = @ratings
-    elsif !params[:ratings].present? && !params[:sort].present?
-      @ratings = session[:ratings]
-      redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
-      #redirect_to :action=> 'index', :ratings => @ratings
     else
       @ratings = session[:ratings]
       redirect_to :action=> 'index', :ratings => @ratings
