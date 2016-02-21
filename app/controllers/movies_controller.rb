@@ -34,14 +34,14 @@ class MoviesController < ApplicationController
 
     @movies = Movie.all.order(@sort_by) 
 
-    if params[:ratings].present?
+    #if params[:ratings].present?
       where_list = []
 
-      params[:ratings].each do |r, val|
+      @ratings.each do |r, val|
         where_list.push(r) 
       end
       @movies = @movies.where(:rating => where_list)
-    end
+    #end
 
   end
 
