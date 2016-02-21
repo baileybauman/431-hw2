@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
       session[:sort] = @sort_by
     else
       @sort_by = session[:sort]
-      redirect_to 'Release Date', :sort => @sort_by
+      #redirect_to 'Release Date', :sort => @sort_by
     end
 
     if params[:ratings].present?
