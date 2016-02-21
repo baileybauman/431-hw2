@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
       @ratings = session[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
     end
 
-    #preserve RESTfulness, update the URI
+    #preserve RESTfulness, update the URI to reflect params
     if !params[:ratings].present? || (!params[:sort].present? && @sort_by != [])
       flash.keep
       redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
