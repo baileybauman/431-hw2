@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
       session[:ratings] = @ratings
     else
       @ratings = session[:ratings]
-      redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
+      #redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
     end
 
     @all_ratings = ['G','PG','PG-13','R']
