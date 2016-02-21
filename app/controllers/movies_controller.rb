@@ -14,7 +14,8 @@ class MoviesController < ApplicationController
     if params[:sort].present?
       @sort_by = params[:sort]
       session[:sort] = @sort_by
-  
+    else
+      @sort_by = session[:sort]
     end
 
     #if session[:sort].nil? == false
