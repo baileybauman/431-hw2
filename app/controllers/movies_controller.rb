@@ -18,11 +18,19 @@ class MoviesController < ApplicationController
       @sort_by = session[:sort]
     end
 
-    #if session[:sort].nil? == false
-     # @sort_by = session[:sort]
+    if params[:ratings].present?
+      @ratings = params[:ratings]
+      session[:ratings] = @ratings
+    elsif !params[:ratings].present? && session[:ratings].nil?
+      @ratings = {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
+      session[:ratings] = @ratings
+    else
+      @ratings = session[:ratings]
+    end
 
     @all_ratings = ['G','PG','PG-13','R']
-    @ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
+    #@ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
+
 
     @movies = Movie.all.order(@sort_by) 
 
