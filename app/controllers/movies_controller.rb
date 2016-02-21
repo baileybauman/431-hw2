@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
       session[:sort] = @sort_by
     else
       @sort_by = session[:sort]
-      redirect_to movies_path, :sort => @sort_by
+      redirect_to :action=> 'index', :sort => @sort_by
       #redirect_to 'Release Date', :sort => @sort_by
     end
 
