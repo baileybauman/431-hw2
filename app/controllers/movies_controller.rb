@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
     end
 
     #preserve RESTfulness, update the URI
-    if !params[:ratings].present? || !params[:sort].present?
+    if !params[:ratings].present? || (!params[:sort].present? && @sort_by != [])
       flash.keep
       redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
     end
