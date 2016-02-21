@@ -28,8 +28,8 @@ class MoviesController < ApplicationController
       #redirect_to :action=> 'index', :sort => @sort_by, :ratings => @ratings
     end
 
-    #if (!params[:ratings].present? || !params[:sort].present?)
-     # redirect_to :action=> 'index', {:sort => @sort_by, :ratings => @ratings}
+    if !params[:ratings].present? || !params[:sort].present?
+      redirect_to :action=> 'index', {:sort => @sort_by, :ratings => @ratings}
 
     @all_ratings = ['G','PG','PG-13','R']
     @movies = Movie.all.order(@sort_by) 
