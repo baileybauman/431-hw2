@@ -13,10 +13,14 @@ class MoviesController < ApplicationController
   def index
     if params[:sort].present?
       @sort_by = params[:sort]
+      session[:sort] = @sort_by
     elsif @sort_by.nil?
       @sort_by = []
     end
-    
+
+    if not session[:sort].nil?
+      @sort_by = session[:sort]
+
     @all_ratings = ['G','PG','PG-13','R']
     @ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
 
