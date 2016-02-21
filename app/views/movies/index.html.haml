@@ -13,7 +13,7 @@
 %table#movies
   %thead
     %tr
-      %th{:class => ('title' == @sort_by) ? 'hilite' : '', :id => 'title_header'}= link_to 'Movie Title', :sort => 'title'
+      %th{:class => ('title' == @sort_by) ? 'hilite' : '', :id => 'title_header'}= link_to 'Movie Title', :sort => 'title', :ratings => @ratings
       %th Rating
       %th{:class => ('release_date' == @sort_by) ? 'hilite' : '', :id => 'release_date_header'}= link_to 'Release Date', :sort => 'release_date'
       %th More Info
