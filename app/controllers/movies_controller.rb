@@ -15,7 +15,8 @@ class MoviesController < ApplicationController
       @sort_by = params[:sort]
       session[:sort] = @sort_by
     else
-      @sort_by = session[:sort]
+      #@sort_by = session[:sort]
+      redirect_to movies_path, :sort => session[:sort]
     end
 
     if params[:ratings].present?
@@ -29,20 +30,13 @@ class MoviesController < ApplicationController
     end
 
     @all_ratings = ['G','PG','PG-13','R']
-    #@ratings = params[:ratings] || {'G'=>1,'PG'=>1,'PG-13'=>1,'R'=>1}
-
-
     @movies = Movie.all.order(@sort_by) 
 
-    #if params[:ratings].present?
-      where_list = []
-
-      @ratings.each do |r, val|
-        where_list.push(r) 
-      end
-      @movies = @movies.where(:rating => where_list)
-    #end
-
+    where_list = []
+    @ratings.each do |r, val|
+      where_list.push(r) 
+    end
+    @movies = @movies.where(:rating => where_list)
   end
 
   def new
